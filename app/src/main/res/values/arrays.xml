@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_confirmation_entries">
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+    </string-array>
+    <string-array name="softscan_values">
+        <item>Softscan not supported</item>
+        <item>Softscan disabled</item>
+        <item>Softscan enabled</item>
+    </string-array>
+</resources>

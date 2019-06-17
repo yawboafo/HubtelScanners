@@ -19,6 +19,8 @@ import java.util.Locale;
 public class ScannerSense {
 
 
+    public static final String SCANNER_CONFIG_URL = "http://help.hubtel.com/payments/connecting-to-a-socket-mobile-scanner";
+
     public static final String DEFAULT_SCANAPI_CONFIGURATION = "Server:ScanAPI-1";
 
     public static final String START_EZ_PAIR = ScannerSense.class.getName()
