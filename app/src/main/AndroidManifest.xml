@@ -8,36 +8,6 @@
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/>
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission
-            android:name="android.permission.READ_SMS"
-            tools:node="remove"/>
-    <uses-permission
-            android:name="android.permission.SEND_SMS"
-            tools:node="remove"/>
-    <uses-permission
-            android:name="android.permission.RECEIVE_SMS"
-            tools:node="remove"/>
-
-    <uses-feature
-            android:name="android.permission.BLUETOOTH_ADMIN"
-            android:required="false"/>
-    <uses-feature
-            android:name="android.permission.INTERNET"
-            android:required="false"/>
-    <uses-feature
-            android:name="android.permission.BLUETOOTH"
-            android:required="true"/>
-
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-
-    <uses-feature
-            android:name="android.hardware.location"
-            android:required="false"/>
-    <uses-feature
-            android:name="android.hardware.location.gps"
-            android:required="false"/>
-
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
             android:allowBackup="true"
@@ -47,21 +17,27 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".TestActivities.Main3Activity">
-        </activity>
-
         <service
-                android:name=".scannerService.MyService"
-                android:enabled="true"
-                android:exported="true">
+                android:name=".scannerService.ScanDataService"
+                android:enabled="true">
         </service>
 
-        <activity android:name=".TestActivities.Main2Activity">
+        <service
+                android:name=".scannerService.ConnectScannerService"
+                android:enabled="true">
+        </service>
+
+        <activity android:name=".TestActivities.Main3Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+
+
+
+        <activity android:name=".TestActivities.Main2Activity">
         </activity>
 
         <meta-data
@@ -70,10 +46,6 @@
         <meta-data
                 android:name="com.socketmobile.capture.DEVELOPER_ID"
                 android:value="34ddc535-ef74-464a-85eb-1b889530f5cf"/>
-
-        <service
-                android:name=".scanners.ScannerSense"
-                android:exported="false"/>
     </application>
 
 </manifest>

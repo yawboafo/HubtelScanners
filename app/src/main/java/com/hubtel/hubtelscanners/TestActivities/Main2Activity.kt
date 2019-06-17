@@ -17,6 +17,9 @@ import com.hubtel.hubtelscanners.scannerBrain.ScannerBrain
 class Main2Activity : AppCompatActivity() , ScannerConnectionDelegate,ScannerDataDelegate {
 
 
+
+
+
     var scannerBrain : ScannerBrain? = null
 
     override fun scannerConnectBegan() {

@@ -79,7 +79,7 @@ class ScannerBrain(var context: Context,
     fun setUp(){
         initBluetoothPairingProperties()
         initScannerBrain()
-        registerToReceiveScannerNotification()
+
     }
     fun unregisterReceivers(){
         try {
@@ -96,15 +96,52 @@ class ScannerBrain(var context: Context,
     private fun initScannerBrain() {
 
 
-        var filter: IntentFilter
-        filter = IntentFilter(ScannerSense.NOTIFY_ERROR_MESSAGE)
-        context.registerReceiver(broadcastReveiver, filter)
-        filter = IntentFilter(ScannerSense.NOTIFY_EZ_PAIR_COMPLETED)
-        context.registerReceiver(broadcastReveiver, filter)
+        var filterOne: IntentFilter
+        filterOne = IntentFilter(ScannerSense.NOTIFY_ERROR_MESSAGE)
+        context.registerReceiver(broadcastReveiver, filterOne)
+        filterOne = IntentFilter(ScannerSense.NOTIFY_EZ_PAIR_COMPLETED)
+        context.registerReceiver(broadcastReveiver, filterOne)
+        filterOne = IntentFilter(ScannerSense.NOTIFY_SCANNER_ARRIVAL)
+        context.registerReceiver(broadcastReveiver, filterOne)
+
+
+
+        var filter : IntentFilter
+        filter = IntentFilter(ScannerSense.NOTIFY_SCANPI_INITIALIZED)
+        context.registerReceiver(itemScanReceiver, filter)
+
         filter = IntentFilter(ScannerSense.NOTIFY_SCANNER_ARRIVAL)
-        context.registerReceiver(broadcastReveiver, filter)
+        context.registerReceiver(itemScanReceiver, filter)
 
+        filter = IntentFilter(ScannerSense.NOTIFY_SCANNER_REMOVAL)
+        context.registerReceiver(itemScanReceiver, filter)
 
+        filter = IntentFilter(ScannerSense.NOTIFY_DECODED_DATA)
+        context.registerReceiver(itemScanReceiver, filter)
+
+        filter = IntentFilter(ScannerSense.NOTIFY_ERROR_MESSAGE)
+        context.registerReceiver(itemScanReceiver, filter)
+
+        filter = IntentFilter(ScannerSense.NOTIFY_CLOSE_ACTIVITY)
+        context.registerReceiver(itemScanReceiver, filter)
+
+        filter = IntentFilter(ScannerSense.SET_SOUND_CONFIG_COMPLETE)
+        context.registerReceiver(itemScanReceiver, filter)
+
+        filter = IntentFilter(ScannerSense.GET_SOUND_CONFIG_COMPLETE)
+        context.registerReceiver(itemScanReceiver, filter)
+
+        filter = IntentFilter(ScannerSense.GET_SOFTSCAN_COMPLETE)
+        context.registerReceiver(itemScanReceiver, filter)
+
+        filter = IntentFilter(ScannerSense.SET_SOFTSCAN_COMPLETE)
+        context.registerReceiver(itemScanReceiver, filter)
+
+        filter = IntentFilter(ScannerSense.SET_TRIGGER_COMPLETE)
+        context.registerReceiver(itemScanReceiver, filter)
+
+        filter = IntentFilter(ScannerSense.SET_OVERLAYVIEW_COMPLETE)
+        context.registerReceiver(itemScanReceiver, filter)
 
 
 
@@ -208,48 +245,6 @@ class ScannerBrain(var context: Context,
 
             }
         }
-    }
-
-    private fun registerToReceiveScannerNotification() {
-
-
-
-        var filter: IntentFilter
-        filter = IntentFilter(ScannerSense.NOTIFY_SCANPI_INITIALIZED)
-        context.registerReceiver(itemScanReceiver, filter)
-
-        filter = IntentFilter(ScannerSense.NOTIFY_SCANNER_ARRIVAL)
-        context.registerReceiver(itemScanReceiver, filter)
-
-        filter = IntentFilter(ScannerSense.NOTIFY_SCANNER_REMOVAL)
-        context.registerReceiver(itemScanReceiver, filter)
-
-        filter = IntentFilter(ScannerSense.NOTIFY_DECODED_DATA)
-        context.registerReceiver(itemScanReceiver, filter)
-
-        filter = IntentFilter(ScannerSense.NOTIFY_ERROR_MESSAGE)
-        context.registerReceiver(itemScanReceiver, filter)
-
-        filter = IntentFilter(ScannerSense.NOTIFY_CLOSE_ACTIVITY)
-        context.registerReceiver(itemScanReceiver, filter)
-
-        filter = IntentFilter(ScannerSense.SET_SOUND_CONFIG_COMPLETE)
-        context.registerReceiver(itemScanReceiver, filter)
-
-        filter = IntentFilter(ScannerSense.GET_SOUND_CONFIG_COMPLETE)
-        context.registerReceiver(itemScanReceiver, filter)
-
-        filter = IntentFilter(ScannerSense.GET_SOFTSCAN_COMPLETE)
-        context.registerReceiver(itemScanReceiver, filter)
-
-        filter = IntentFilter(ScannerSense.SET_SOFTSCAN_COMPLETE)
-        context.registerReceiver(itemScanReceiver, filter)
-
-        filter = IntentFilter(ScannerSense.SET_TRIGGER_COMPLETE)
-        context.registerReceiver(itemScanReceiver, filter)
-
-        filter = IntentFilter(ScannerSense.SET_OVERLAYVIEW_COMPLETE)
-        context.registerReceiver(itemScanReceiver, filter)
     }
     private val itemScanReceiver = object : BroadcastReceiver() {
 
